@@ -13,3 +13,5 @@ Practice problems out of the R for Data Science textbook
 -   scripts: Chapter 6 (all problems)
 
 -   eda: Chapter 7 (selected problems)
+
+-   tibbles: Chapter 10 (selected problems)
