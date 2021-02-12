@@ -15,3 +15,7 @@ Practice problems out of the R for Data Science textbook
 -   eda: Chapter 7 (selected problems)
 
 -   tibbles: Chapter 10 (selected problems)
+
+-   data_import: Chapter 11 (selected problems)
+
+-   tidy_data: Chapter 12
