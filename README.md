@@ -19,3 +19,5 @@ Practice problems out of the R for Data Science textbook
 -   data_import: Chapter 11 (selected problems)
 
 -   tidy_data: Chapter 12 (selected problems)
+
+-   rel_data: Chapter 13 (selected problems)
