@@ -1,0 +1,79 @@
+---
+title: "rel_data"
+author: "Isabel Hanewicz"
+date: "2/16/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library("tidyverse")
+library("nycflights13")
+library("viridis")
+```
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r cars}
+summary(cars)
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+
+## Now my relational data notes
+mutating joins: add new variables to one df from matching observations in the other
+filtering joins: filter observations from one df based on whether or not they match observations in another df
+
+13.2.1
+2) the column faa in airports is a foreign key of the weather column origin 
+
+primary key: uniquely identifies an observation in its own table
+foreign key: uniquely identifies observation in another table
+
+```{r}
+library(babynames)
+babynames::babynames
+```
+The key in babynames is year, sex, name (combined)
+
+Exercises 13.4.6
+# 2
+```{r}
+airports2 <- airports %>%
+  select(faa, lat, lon)
+
+flights %>%
+  left_join(airports2, 
+            by=c("origin"="faa")) %>%
+  left_join(airports2,
+            by=c("dest" = "faa"))
+```
+semi_join(x,y) : keeps all x with match in y
+anti_join(x,y) : drops all x with match in y
+
+# 13.5.1
+# 2
+```{r}
+fly_100 <- flights %>%
+  filter(!is.na(tailnum)) %>%
+  group_by(tailnum) %>%
+  count() %>%
+  filter(n >= 100)
+
+flights %>%
+  semi_join(fly_100, by="tailnum")
+
+```
+
